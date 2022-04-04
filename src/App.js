@@ -1,25 +1,27 @@
 import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
 
+//name of the state is List 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const [list, setList] = useState([])
+const [current,setCurrent] = useState ("")
+
+function newTask(){
+  setList([...list,current])
 }
 
+return (
+  <div className="App">
+      <h1>The To do list</h1>
+      <input type= "text" onChange = {(e)=>{setCurrent(e)} }></input>
+        <button onClick = "newTask" >
+          + 
+        </button>
+  {list.map((e)=>{return <li>{e}</li>})}
+    
+    </div>
+//dynamic html: introduce {}
+);
+}
 export default App;
