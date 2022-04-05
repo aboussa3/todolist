@@ -8,17 +8,17 @@ const [list, setList] = useState([])
 const [current,setCurrent] = useState ("")
 
 function newTask(){
-  setList([...list,current])
+  setList([list,current])
 }
-
+console.log(current,list)
 return (
   <div className="App">
       <h1>The To do list</h1>
-      <input type= "text" onChange = {(e)=>{setCurrent(e)} }></input>
-        <button onClick = "newTask" >
+      <input type= "text" onChange = {e=>setCurrent(e.target.value) }></input>
+    <button onClick={newTask} >
           + 
         </button>
-  {list.map((e)=>{return <li>{e}</li>})}
+    {list.map(e => { return <li>{e}</li> })}
     
     </div>
 //dynamic html: introduce {}
